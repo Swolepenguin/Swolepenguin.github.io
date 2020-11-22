@@ -31,7 +31,7 @@ const AI = {
     x : canvas.width - 10,
     y : (canvas.height - 100)/2,
     width : 10,
-    height : 100,
+    height : 60,
     score : 0,
     color : "orange",
     paddle: 'CPU'
@@ -66,6 +66,8 @@ function getMousePos(evt){
     
     human.y = evt.clientY - rect.top - human.height/2;
 }
+let AILevel = 0.1;
+AI.y += (ball.y - (AI.y+AI.height/2))*AILevel; 
 //ball reset
 function resetBall(){
     ball.x = canvas.width/2;
@@ -111,7 +113,7 @@ function update(){
 
 function checkWinner(player) {
     resetBall();
-    if (player.score >= 10) {
+    if (player.score >= 2) {
         delete ball.speed;
         const newElement = document.createElement('p');
 
